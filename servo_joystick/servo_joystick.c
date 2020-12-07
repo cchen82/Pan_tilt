@@ -1,3 +1,9 @@
+/*
+ * servo.c
+ *
+ * Created: 11/24/2020 9:30:07 PM
+ * Author : chen
+ */ 
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -100,11 +106,11 @@ int main(void)
 			//OCR0B=i/2;
 			//_delay_ms(10);
 		//}
-		//OCR0A = 65;	/* Set servo shaft at -90Â° position */
+		//OCR0A = 65;	/* Set servo shaft at -90° position */
 		//OCR0B=OCR0A/2;
 		//_delay_ms(1500);
 		//
-		//OCR0A = 175;	/* Set servo shaft at 0Â° position */
+		//OCR0A = 175;	/* Set servo shaft at 0° position */
 		//OCR0B=OCR0A/2;
 		//_delay_ms(1500);
 
