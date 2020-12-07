@@ -1,6 +1,4 @@
 # Atmel Studio Files
-*.atsln
-*.cproj
 /Debug
 *.elf
 *.src
