@@ -4,10 +4,11 @@
 #include <stdio.h>
 #define F_CPU 16000000UL
 #include <util/delay.h>
-#include "USART.h"
+#include "..\lib\uart.h"
 #define BAUD_RATE 9600
 #define BAUD_PRESCALER (((F_CPU / (BAUD_RATE * 16UL))) - 1)
 char str_print[20];
+
 void initialize_adc(){
 	cli();
 	//Power Reduction ADC on PRR bit 0
@@ -63,6 +64,7 @@ void initialize_pwm (){
 	sei(); //Enable global interrupts
 	
 }
+/*
 int main(void)
 {
 	USART_int(BAUD_PRESCALER);
@@ -100,13 +102,14 @@ int main(void)
 			//OCR0B=i/2;
 			//_delay_ms(10);
 		//}
-		//OCR0A = 65;	/* Set servo shaft at -90° position */
+		//OCR0A = 65;	// Set servo shaft at -90° position 
 		//OCR0B=OCR0A/2;
 		//_delay_ms(1500);
 		//
-		//OCR0A = 175;	/* Set servo shaft at 0° position */
+		//OCR0A = 175;	// Set servo shaft at 0° position
 		//OCR0B=OCR0A/2;
 		//_delay_ms(1500);
 
 	}
 }
+*/
