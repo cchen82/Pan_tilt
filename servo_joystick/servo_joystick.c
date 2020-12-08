@@ -14,7 +14,7 @@
 #define BAUD_RATE 9600
 #define BAUD_PRESCALER (((F_CPU / (BAUD_RATE * 16UL))) - 1)
 char str_print[20];
-void initialize_adc(){
+void initialize_adc_joystick(){
 	cli();
 	//Power Reduction ADC on PRR bit 0
 	PRR &= ~(1<<PRADC);
@@ -44,57 +44,55 @@ void initialize_adc(){
 	ADCSRA |= (1<<ADSC);
 	sei();
 }
-void initialize_pwm (){
+//servo with joystick is on PD5
+void initialize_pwm_joyservo (){
 	cli();//disable all interrupts
-	DDRB |= (1<<DDB1)|(1<<DDB2);	/* Make OC1A pin (~D9) OC1B (~D10) as output */
-	TCNT1 = 0;		/* Set timer1 count zero */
-	ICR1 = 4999;		/* Set TOP count for timer1 in ICR1 register */
-	/* Set Fast PWM, TOP in ICR1, Clear OC1A on compare match, clk/64 */
-	//TCCR1A = (1<<WGM11)|(1<<COM1A1);
-	//TCCR1B = (1<<WGM12)|(1<<WGM13)|(1<<CS10)|(1<<CS11);
-	//clear OC1A/OC1B on compare match
-	TCCR1A |= (1<<COM1A1);
-	TCCR1A &= ~(1<<COM1A0);
-//	TCCR1A |= (1<<COM1B1);
-//	TCCR1A &= ~(1<<COM1B0);
-	//Fast PWM Mode
-	TCCR1A &= ~(1<<WGM10);
-	TCCR1A |= (1<<WGM11);
-	TCCR1B |= (1<<WGM12);
-	TCCR1B |= (1<<WGM13);
-	//Configure timer pre-scaler (011) /64
-	TCCR1B |= (1<<CS10);
-	TCCR1B |= (1<<CS11);
-	TCCR1B &= ~(1<<CS12);
-//	OCR1A=250;
+	DDRD |= (1<<DDD5);	/* Make OC1A pin (~D9) OC1B (~D10) as output */
+	//Use Timer 0 for joystick to servo
+	//prescale of 1024 (101)
+	TCCR0B |= (1<<CS02);
+	TCCR0B &= ~(1<<CS01);
+	TCCR0B |= (1<<CS00);
+	
+	//Fast PWM mode
+	TCCR0A |= (1<<WGM00);
+	TCCR0A |= (1<<WGM01);
+	TCCR0B |= (1<<WGM02);
+	
+	//OCR0A sets frequency
+	//OCR0B sets duty cycle
+	OCR0A=255;
+	OCR0B=OCR0A/2;
+	
+	//Non-inverting mode
+	//Clear on compare match
+	TCCR0A |= (1<<COM1B1);
 	sei(); //Enable global interrupts
 	
 }
 int main(void)
 {
 	USART_int(BAUD_PRESCALER);
-	initialize_pwm();
-	initialize_adc();
+	initialize_pwm_joyservo();
+	initialize_adc_joystick();
 	while (1)
 	{
-		if(OCR1A>125&&OCR1A<625){
+		if(OCR0B>10&&OCR0B<40){
 			if ((ADC*5/1024)==0){
-				OCR1A--;
-
+				OCR0B--;
 			}
 			else if ((ADC*5/1024)==4){
-				OCR1A++;
+				OCR0B++;
 
 			}
 		}
-		else if (OCR1A<=125){
-			OCR1A=126;
+		else if (OCR0B<=10){
+			OCR0B=11;
 		}
-		else if (OCR1A>=625){
-			OCR1A=624;
+		else if (OCR0B>=40){
+			OCR0B=39;
 		}
-		_delay_ms(5);
-		
+		_delay_ms(25);
 
 	}
 }
