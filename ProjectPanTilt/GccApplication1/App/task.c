@@ -52,10 +52,10 @@ void vMahonyTaskFunction( void *pvParameters )
 // 			UART_putstring(MyString);
 			MahonyAHRSupdateIMU(GyroData[0],GyroData[1],GyroData[2],AccData[0],AccData[1],AccData[2]);
 			q2Angle(Angle);
-			sprintf(MyString,"Angle x: %f ms\n",Angle[0]);
-			UART_putstring(MyString);
-			sprintf(MyString,"Angle y: %f ms\n",Angle[1]);
-			UART_putstring(MyString);
+// 			sprintf(MyString,"Angle x: %f ms\n",Angle[0]);
+// 			UART_putstring(MyString);
+// 			sprintf(MyString,"Angle y: %f ms\n",Angle[1]);
+// 			UART_putstring(MyString);
 // 			time2 = xTaskGetTickCount();
 // 			sprintf(MyString,"time1: %i ms\n",time2);
 // 			UART_putstring(MyString);
@@ -138,8 +138,8 @@ void vADCTaskFunction( void *pvParameters )
 			else if (OCR0B>=40){
 				OCR0B=39;
 			}
-			sprintf(MyString,"Task ADC:%f\n",ADC_Value);
-			UART_putstring(MyString);
+// 			sprintf(MyString,"Task ADC:%f\n",ADC_Value);
+// 			UART_putstring(MyString);
 // 			
 		}
 	}
@@ -151,7 +151,7 @@ void MytaskCreate(void)
 	/* Create tasks and make some magic*/
 
 	xTaskCreate( vMahonyTaskFunction,"TASKA",256,NULL,3,NULL);
-	xTaskCreate( vMPU6050TaskFunction,"TASKB",256,NULL,2,NULL);
+	xTaskCreate( vMPU6050TaskFunction,"TASKB",256,NULL, 2,NULL);
 	xTaskCreate( vControlTaskFunction,"TASKC",256,NULL,1,NULL);
 	xTaskCreate( vADCTaskFunction,"TASKD",256,NULL,4,NULL);
 	
