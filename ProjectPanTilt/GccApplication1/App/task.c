@@ -123,21 +123,7 @@ void vADCTaskFunction( void *pvParameters )
 			vTaskDelayUntil( &xLastWakeTimeADC, xPeriodFrequencyADC);
 			//ADC
 			ADC_Value = ADC;
-			if(OCR0B>10&&OCR0B<40){
-				if ((ADC_Value*5/1024)==0){
-					OCR0B--;
-				}
-				else if ((ADC_Value*5/1024)==4){
-					OCR0B++;
-
-				}
-			}
-			else if (OCR0B<=10){
-				OCR0B=11;
-			}
-			else if (OCR0B>=40){
-				OCR0B=39;
-			}
+			OCR0B = (float)ADC*(40-10)/1024+10;
 // 			sprintf(MyString,"Task ADC:%f\n",ADC_Value);
 // 			UART_putstring(MyString);
 // 			
