@@ -46,26 +46,27 @@ void initialize_adc(){
 }
 void initialize_pwm (){
 	cli();//disable all interrupts
-	//PD5 as output
-	DDRD |= (1<<DDD5);
-	
-	//Configure timer mode to Phase Correct PWM (101)
-	//(101) TOP vale is OCRA instead of set value of 0XFF
-	TCCR0A |= (1<<WGM00);
-	TCCR0A &= ~(1<<WGM01);
-	TCCR0B |= (1<<WGM02);
-	
-	//Configure timer pre-scaler (100) /256
-	TCCR0B &= ~(1<<CS00);
-	TCCR0B &= ~(1<<CS01);
-	TCCR0B |= (1<<CS02);
-
-	//Configure Output Compare Register A/B
-	OCR0A=80;
-	OCR0B=OCR0A/2;
-	//Non-inverting mode
-	//Clear on compare match
-	TCCR0A |= (1<<COM0B1);
+	DDRB |= (1<<DDB1)|(1<<DDB2);	/* Make OC1A pin (~D9) OC1B (~D10) as output */
+	TCNT1 = 0;		/* Set timer1 count zero */
+	ICR1 = 4999;		/* Set TOP count for timer1 in ICR1 register */
+	/* Set Fast PWM, TOP in ICR1, Clear OC1A on compare match, clk/64 */
+	//TCCR1A = (1<<WGM11)|(1<<COM1A1);
+	//TCCR1B = (1<<WGM12)|(1<<WGM13)|(1<<CS10)|(1<<CS11);
+	//clear OC1A/OC1B on compare match
+	TCCR1A |= (1<<COM1A1);
+	TCCR1A &= ~(1<<COM1A0);
+//	TCCR1A |= (1<<COM1B1);
+//	TCCR1A &= ~(1<<COM1B0);
+	//Fast PWM Mode
+	TCCR1A &= ~(1<<WGM10);
+	TCCR1A |= (1<<WGM11);
+	TCCR1B |= (1<<WGM12);
+	TCCR1B |= (1<<WGM13);
+	//Configure timer pre-scaler (011) /64
+	TCCR1B |= (1<<CS10);
+	TCCR1B |= (1<<CS11);
+	TCCR1B &= ~(1<<CS12);
+//	OCR1A=250;
 	sei(); //Enable global interrupts
 	
 }
@@ -76,43 +77,24 @@ int main(void)
 	initialize_adc();
 	while (1)
 	{
-		//int i=30;
-		if(OCR0A>30&&OCR0A<160){
+		if(OCR1A>125&&OCR1A<625){
 			if ((ADC*5/1024)==0){
-				OCR0A--;
-				OCR0B=OCR0A/2;
-				sprintf(str_print,"%d\n",OCR0A);
-				USART_print(str_print);
+				OCR1A--;
+
 			}
 			else if ((ADC*5/1024)==4){
-				OCR0A++;
-				OCR0B=OCR0A/2;
-				sprintf(str_print,"%d\n",OCR0A);
-				USART_print(str_print);
+				OCR1A++;
+
 			}
 		}
-		else if (OCR0A<=30){
-			OCR0A=31;
-			OCR0B=OCR0A/2;
+		else if (OCR1A<=125){
+			OCR1A=126;
 		}
-		else if (OCR0A>=160){
-			OCR0A=159;
-			OCR0B=OCR0A/2;
+		else if (OCR1A>=625){
+			OCR1A=624;
 		}
-		_delay_ms(10);
+		_delay_ms(5);
 		
-		//for (int i=0;i<180;i++){
-			//OCR0A=i;
-			//OCR0B=i/2;
-			//_delay_ms(10);
-		//}
-		//OCR0A = 65;	/* Set servo shaft at -90° position */
-		//OCR0B=OCR0A/2;
-		//_delay_ms(1500);
-		//
-		//OCR0A = 175;	/* Set servo shaft at 0° position */
-		//OCR0B=OCR0A/2;
-		//_delay_ms(1500);
 
 	}
 }

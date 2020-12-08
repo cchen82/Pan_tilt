@@ -7,6 +7,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "servo_joystick", "servo_joy
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "joystick", "joystick\joystick.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "duty_cycle_servo", "duty_cycle_servo\duty_cycle_servo.cproj", "{3E8A028D-A07E-47ED-A789-B1704D3E9F8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -21,6 +23,10 @@ Global
 		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|AVR.Build.0 = Debug|AVR
 		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.ActiveCfg = Release|AVR
 		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|AVR.Build.0 = Release|AVR
+		{3E8A028D-A07E-47ED-A789-B1704D3E9F8A}.Debug|AVR.ActiveCfg = Debug|AVR
+		{3E8A028D-A07E-47ED-A789-B1704D3E9F8A}.Debug|AVR.Build.0 = Debug|AVR
+		{3E8A028D-A07E-47ED-A789-B1704D3E9F8A}.Release|AVR.ActiveCfg = Release|AVR
+		{3E8A028D-A07E-47ED-A789-B1704D3E9F8A}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
