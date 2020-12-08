@@ -32,7 +32,7 @@ void MPU_Init(void)
 	*/
 	I2C_Start_Wait(MPU6050_addr);
 	I2C_Write(0x1B);			
-	I2C_Write(0x08);
+	I2C_Write(0x10);
 	I2C_Stop();
 	/*
 	//1C AccConfig 8g
@@ -88,7 +88,7 @@ void MPU_read(float Acc[3], float Gyro[3])
 
 void MPU_Calib(float Acc[3], float Gyro[3])
 {
-	static float calib_loops = 100;
+	static float calib_loops = 1000;
 	static float sum_acc_cal_sum[3]={0,0,0};
 	static float sum_gyro_cal_sum[3]={0,0,0};
 	for (int i =0;i<calib_loops;i++)

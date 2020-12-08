@@ -26,7 +26,6 @@
 #include "../include/balance.h"
 /* system time include file. */
 #include "time.h"
-
 extern float AccData[3];
 extern float GyroData[3];
 extern float Angle[3];
@@ -95,13 +94,39 @@ void vControlTaskFunction( void *pvParameters )
 	{
 		TickType_t xLastWakeTimeControl;
 		const TickType_t xPeriodFrequencyControl = 1;// 15ms per tick  15ms*93 = 1395
-		
+		static float x_error;
+		static float y_error;
+		static float DEG1;
+		static float DEG2;
+		static float last_error_x;
+		static float inc_error_x;
+		static float last_error_y;
+		static float inc_error_y;		
 		xLastWakeTimeControl = xTaskGetTickCount();
 
 		for( ;; )
 		{
 			vTaskDelayUntil( &xLastWakeTimeControl, xPeriodFrequencyControl );
-			BalanceControl(Angle);
+			x_error = - Angle[0];
+			y_error = - Angle[1];
+			DEG1 = PID(x_error,last_error_x,inc_error_x);
+			DEG2 = PID(y_error,last_error_y,inc_error_y);
+			if (abs(inc_error_x)<Increament_Max)
+			{
+				inc_error_x += x_error/PID_Freq;
+			}
+			last_error_x = x_error;
+			if (abs(inc_error_y)<Increament_Max)
+			{
+				inc_error_y += y_error/PID_Freq;
+			}
+			last_error_y = y_error;
+// 			sprintf(MyString,"Y %f \n",Angle[1]);
+// 			UART_putstring(MyString);
+
+			deg_to_servo1(DEG1);
+			deg_to_servo2(DEG2);
+/*			BalanceControl(Angle);*/
 // 			sprintf(MyString,"Task Control\n");
 // 			UART_putstring(MyString);
 			
@@ -123,7 +148,23 @@ void vADCTaskFunction( void *pvParameters )
 			vTaskDelayUntil( &xLastWakeTimeADC, xPeriodFrequencyADC);
 			//ADC
 			ADC_Value = ADC;
-			OCR0B = (float)ADC*(40-10)/1024+10;
+			if (ADC_Value>800)
+			{
+				OCR0B--;
+				if (OCR0B<=10)
+				{
+					OCR0B=11;
+				}
+			}
+			if (ADC_Value<300)
+			{
+				OCR0B++;
+				if (OCR0B>=40)
+				{
+					OCR0B=39;
+				}
+			}
+//			OCR0B = (float)ADC*(40-10)/1024+10;
 // 			sprintf(MyString,"Task ADC:%f\n",ADC_Value);
 // 			UART_putstring(MyString);
 // 			
@@ -138,7 +179,7 @@ void MytaskCreate(void)
 
 	xTaskCreate( vMahonyTaskFunction,"TASKA",256,NULL,3,NULL);
 	xTaskCreate( vMPU6050TaskFunction,"TASKB",256,NULL, 2,NULL);
-	xTaskCreate( vControlTaskFunction,"TASKC",256,NULL,1,NULL);
-	xTaskCreate( vADCTaskFunction,"TASKD",256,NULL,4,NULL);
+	xTaskCreate( vControlTaskFunction,"TASKC",256,NULL,4,NULL);
+	xTaskCreate( vADCTaskFunction,"TASKD",128,NULL,4,NULL);
 	
 }
