@@ -7,6 +7,9 @@
 #include "../lib/uart.h"
 #include "../include/MahonyIMU.h"
 #include "../include/mpu6050.h"
+#include "../app/task.h"
+#include "mytest.h"
+#include "servo_joystick.h"
 
 #ifndef MAIN_H_
 #define MAIN_H_

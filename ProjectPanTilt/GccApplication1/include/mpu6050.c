@@ -77,7 +77,7 @@ void MPU_read(float Acc[3], float Gyro[3])
 	Gyro[1] = (((int)I2C_Read_Ack()<<8) | (int)I2C_Read_Ack());
 	Gyro[2] = (((int)I2C_Read_Ack()<<8) | (int)I2C_Read_Nack());
 	I2C_Stop();
-	_delay_ms(10);
+	//_delay_ms(10);
 	//transform the raw data to corresponding range
 	for (int i=0;i<3;i++)
 	{

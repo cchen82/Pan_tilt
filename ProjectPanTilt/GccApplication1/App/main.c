@@ -37,18 +37,21 @@ int main(void)
 	UART_init(BAUD_PRESCALER);
 	I2C_Init();
 	MPU_Init();
+	ADC_Init();
+	initialize_pwm_2servos();
+	initialize_pwm_joyservo();
+	sprintf(MyString,"Init OK");
+	UART_putstring(MyString);
+	
+	MytaskCreate();
+	vTaskStartScheduler();
+	while(1){}
 
-	while(1)
-	{
-		/*
-		MPU_read(AccData,GyroData);
-		MahonyAHRSupdateIMU(GyroData[0],GyroData[1],GyroData[2],AccData[0],AccData[1],AccData[2]);
-		q2Angle(Angle);
-		sprintf(MyString,"Angle x:%.3f\n", Angle[0]);
-		UART_putstring(MyString);
-		*/
-		MytaskCreate();
-		vTaskStartScheduler();
-	}
+// 	// speed test
+// 	while (1)
+// 	{
+// 		speedtest();
+// 	}
 
-}	
+
+}

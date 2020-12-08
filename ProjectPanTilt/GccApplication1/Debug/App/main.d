@@ -24,7 +24,8 @@ App/main.d App/main.o: ../App/main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../App/../include/..\lib\I2C_Master_H_file.h \
  ../App/../include/..\lib\uart.h ../App/../include/MPU6050_res_define.h \
- ../App/../include/MahonyIMU.h ../App/../FreeRTOS/FreeRTOS.h \
+ ../App/../include/MahonyIMU.h ../App/../app/task.h ../App/mytest.h \
+ ../App/servo_joystick.h ../App/../FreeRTOS/FreeRTOS.h \
  ../App/../FreeRTOS/FreeRTOSConfig.h ../App/../FreeRTOS/projdefs.h \
  ../App/../FreeRTOS/portable.h ../App/../FreeRTOS/portmacro.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\wdt.h \
@@ -91,6 +92,12 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../App/../include/MPU6050_res_define.h:
 
 ../App/../include/MahonyIMU.h:
+
+../App/../app/task.h:
+
+../App/mytest.h:
+
+../App/servo_joystick.h:
 
 ../App/../FreeRTOS/FreeRTOS.h:
 

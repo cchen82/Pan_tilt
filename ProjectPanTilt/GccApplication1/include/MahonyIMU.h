@@ -15,7 +15,7 @@ void q2Angle(float angle[3]);
 
 #define twoKi 0.0f
 #define twoKp 1.0f
-#define sampleFreq 100.0f
+#define sampleFreq 66.7f
 
 
 

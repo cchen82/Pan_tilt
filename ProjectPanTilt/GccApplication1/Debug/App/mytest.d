@@ -1,8 +1,8 @@
-App/task.d App/task.o: ../App/task.c \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h \
+App/mytest.d App/mytest.o: ../App/mytest.c ../App/../lib/uart.h \
+ ../App/../include/mpu6050.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -16,33 +16,24 @@ App/task.d App/task.o: ../App/task.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sleep.h \
- ../App/../FreeRTOS/FreeRTOS.h ../App/../FreeRTOS/FreeRTOSConfig.h \
- ../App/../FreeRTOS/projdefs.h ../App/../FreeRTOS/portable.h \
- ../App/../FreeRTOS/portmacro.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\wdt.h \
- ../App/../FreeRTOS/mpu_wrappers.h ../App/../FreeRTOS/FreeRTOSBoardDefs.h \
- ../App/../FreeRTOS/task.h ../App/../FreeRTOS/list.h \
- ../App/../FreeRTOS/queue.h ../App/../FreeRTOS/task.h \
- ../App/../FreeRTOS/semphr.h ../App/../FreeRTOS/queue.h \
- ../App/../lib/uart.h ../App/../include/MahonyIMU.h \
- ../App/../include/MPU6050.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../App/../include/..\lib\I2C_Master_H_file.h \
  ../App/../include/..\lib\uart.h ../App/../include/MPU6050_res_define.h \
- ../App/../include/MahonyIMU.h ../App/../include/balance.h \
- ../App/../include/../App/servo_joystick.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\time.h
+ ../App/../include/MahonyIMU.h ../App/../include/MahonyIMU.h \
+ ../App/servo_joystick.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
+../App/../lib/uart.h:
+
+../App/../include/mpu6050.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdbool.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 
@@ -70,42 +61,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sleep.h:
-
-../App/../FreeRTOS/FreeRTOS.h:
-
-../App/../FreeRTOS/FreeRTOSConfig.h:
-
-../App/../FreeRTOS/projdefs.h:
-
-../App/../FreeRTOS/portable.h:
-
-../App/../FreeRTOS/portmacro.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\wdt.h:
-
-../App/../FreeRTOS/mpu_wrappers.h:
-
-../App/../FreeRTOS/FreeRTOSBoardDefs.h:
-
-../App/../FreeRTOS/task.h:
-
-../App/../FreeRTOS/list.h:
-
-../App/../FreeRTOS/queue.h:
-
-../App/../FreeRTOS/task.h:
-
-../App/../FreeRTOS/semphr.h:
-
-../App/../FreeRTOS/queue.h:
-
-../App/../lib/uart.h:
-
-../App/../include/MahonyIMU.h:
-
-../App/../include/MPU6050.h:
-
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
@@ -120,8 +75,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../App/../include/MahonyIMU.h:
 
-../App/../include/balance.h:
+../App/../include/MahonyIMU.h:
 
-../App/../include/../App/servo_joystick.h:
+../App/servo_joystick.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\time.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
