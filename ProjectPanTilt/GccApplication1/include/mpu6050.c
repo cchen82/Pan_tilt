@@ -60,15 +60,11 @@ void MPU_Init(void)
 	MPU_Calib(AccData,GyroData);
 }
 
-void MPU_Start_Loc(void)
-{
-	I2C_Start_Wait(MPU6050_addr);								/* I2C start with device write address */
-	I2C_Write(0x3B);							/* Write start location address from where to read */
-	I2C_Repeated_Start(0xD1);							/* I2C start with device read address */
-}
 void MPU_read(float Acc[3], float Gyro[3])
 {
-	MPU_Start_Loc();									/* Read Gyro values */
+	I2C_Start_Wait(MPU6050_addr);
+	I2C_Write(0x3B);
+	I2C_Repeated_Start(0xD1);
 	Acc[0] = (((int)I2C_Read_Ack()<<8) | (int)I2C_Read_Ack());
 	Acc[1] = (((int)I2C_Read_Ack()<<8) | (int)I2C_Read_Ack());
 	Acc[2] = (((int)I2C_Read_Ack()<<8) | (int)I2C_Read_Ack());

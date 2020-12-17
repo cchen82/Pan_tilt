@@ -1,7 +1,7 @@
 /*
  * MahonyIMU.h
  *
- * Created: 2020/11/25 10:17:52
+ * Created: 2020/11/20 10:17:52
  *  Author: Kennys
  */ 
 
@@ -13,7 +13,6 @@
 void MahonyAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay, float az);
 void q2Angle(float angle[3]);
 
-#define twoKi 0.0f
 #define twoKp 1.0f
 #define sampleFreq 66.7f
 

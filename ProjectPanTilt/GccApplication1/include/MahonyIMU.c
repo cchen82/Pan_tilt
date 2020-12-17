@@ -2,7 +2,7 @@
  * MahonyIMU.c
  * It is based on a open-source IMU algorithm.
  * Details can be found https://x-io.co.uk/open-source-ahrs-with-x-imu/
- * Created: 2020/11/25 10:11:50
+ * Created: 2020/11/20 10:11:50
  *  Author: KennyZh
  */
 
@@ -15,9 +15,6 @@ float q0 = 1;
 float q1 = 0;
 float q2 = 0;
 float q3 = 0;
-float integralFBx = 0;
-float integralFBy = 0;
-float integralFBz = 0;
 
 float invSqrt( float number )
 {
@@ -75,35 +72,6 @@ void MahonyAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay, float
 		halfey = (az * halfvx - ax * halfvz);
 
 		halfez = (ax * halfvy - ay * halfvx);
-
-		// Compute and apply integral feedback if enabled
-
-		if(twoKi > 0.0f) {
-			integralFBx += twoKi * halfex * (1.0f / sampleFreq); // integral error scaled by Ki
-			
-			integralFBy += twoKi * halfey * (1.0f / sampleFreq);
-
-			integralFBz += twoKi * halfez * (1.0f / sampleFreq);
-
-			gx += integralFBx; // apply integral feedback
-
-			gy += integralFBy;
-
-			gz += integralFBz;
-
-		}
-
-		else {
-
-			integralFBx = 0.0f; // prevent integral windup
-
-			integralFBy = 0.0f;
-
-			integralFBz = 0.0f;
-
-		}
-
-		// Apply proportional feedback
 
 		gx += twoKp * halfex;
 

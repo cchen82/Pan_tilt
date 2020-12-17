@@ -17,6 +17,5 @@
 
 #define MPU6050_addr 0xD0
 void MPU_Init(void);
-void MPU_Start_Loc(void);
 void MPU_read(float Acc[3], float Gyro[3]);
 void MPU_Calib(float Acc[3], float Gyro[3]);
