@@ -20,10 +20,9 @@ App/mytest.d App/mytest.o: ../App/mytest.c ../App/../lib/uart.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../App/../include/..\lib\I2C_Master_H_file.h \
- ../App/../include/..\lib\uart.h ../App/../include/MPU6050_res_define.h \
- ../App/../include/MahonyIMU.h ../App/../include/MahonyIMU.h \
- ../App/../include/balance.h ../App/../include/../App/servo_joystick.h \
- ../App/servo_joystick.h \
+ ../App/../include/..\lib\uart.h ../App/../include/MahonyIMU.h \
+ ../App/../include/MahonyIMU.h ../App/../include/balance.h \
+ ../App/../include/../App/servo_joystick.h ../App/servo_joystick.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h
 
 ../App/../lib/uart.h:
@@ -71,8 +70,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../App/../include/..\lib\I2C_Master_H_file.h:
 
 ../App/../include/..\lib\uart.h:
-
-../App/../include/MPU6050_res_define.h:
 
 ../App/../include/MahonyIMU.h:
 

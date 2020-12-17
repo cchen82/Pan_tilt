@@ -19,8 +19,7 @@ include/MahonyIMU.d include/MahonyIMU.o: ../include/MahonyIMU.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- ../include/..\lib\I2C_Master_H_file.h ../include/..\lib\uart.h \
- ../include/MPU6050_res_define.h
+ ../include/..\lib\I2C_Master_H_file.h ../include/..\lib\uart.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 
@@ -67,5 +66,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../include/..\lib\I2C_Master_H_file.h:
 
 ../include/..\lib\uart.h:
-
-../include/MPU6050_res_define.h:

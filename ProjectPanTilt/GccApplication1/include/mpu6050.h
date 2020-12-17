@@ -13,7 +13,6 @@
 #include <util/delay.h>
 #include "..\lib\I2C_Master_H_file.h"
 #include "..\lib\uart.h"
-#include "MPU6050_res_define.h"
 #include "MahonyIMU.h"
 
 #define MPU6050_addr 0xD0

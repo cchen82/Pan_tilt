@@ -31,9 +31,8 @@ App/task.d App/task.o: ../App/task.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
  ../App/../include/..\lib\I2C_Master_H_file.h \
- ../App/../include/..\lib\uart.h ../App/../include/MPU6050_res_define.h \
- ../App/../include/MahonyIMU.h ../App/../include/balance.h \
- ../App/../include/../App/servo_joystick.h \
+ ../App/../include/..\lib\uart.h ../App/../include/MahonyIMU.h \
+ ../App/../include/balance.h ../App/../include/../App/servo_joystick.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\time.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
@@ -115,8 +114,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../App/../include/..\lib\I2C_Master_H_file.h:
 
 ../App/../include/..\lib\uart.h:
-
-../App/../include/MPU6050_res_define.h:
 
 ../App/../include/MahonyIMU.h:
 

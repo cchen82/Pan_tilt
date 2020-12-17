@@ -1,6 +1,7 @@
 /*
  * MahonyIMU.c
- *
+ * It is based on a open-source IMU algorithm.
+ * Details can be found https://x-io.co.uk/open-source-ahrs-with-x-imu/
  * Created: 2020/11/25 10:11:50
  *  Author: KennyZh
  */
@@ -114,7 +115,7 @@ void MahonyAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay, float
 
 	// Integrate rate of change of quaternion
 
-	gx *= (0.5f * (1.0f / sampleFreq)); // pre-multiply common factors
+	gx *= (0.5f * (1.0f / sampleFreq));
 
 	gy *= (0.5f * (1.0f / sampleFreq));
 
