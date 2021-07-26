@@ -5,7 +5,7 @@ Our project is intended to build a movable pan and tilt. As modern technology pr
 In some so called robot restraunts, there exist the robot waiters/waitressed. However, these robots are basically "wheeled plate" that can only deliver the food instead of serving them. This project tries to design a robot arm that could maintain the balance of the plate, which then can be used to serve a drink without spilling.
 
 ## Hardware
-![alt text](https://github.com/Kenny-Z/Pan_Tilt/blob/main/image/image.PNG?raw=true)
+![alt text](https://github.com/cchen82/Pan_tilt/blob/wuji/image/image.PNG?raw=true)
 ## Demo Video is here:  
 https://youtu.be/7a1tUkKl7bg  
 ## introduction video is here:  
